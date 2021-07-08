@@ -11,6 +11,6 @@ class Invoker:
         try:
             command = self.__factory.get_command(command_name, dna_data, arguments)
             output = command.action()
-        except (TypeError, ValueError) as e:
+        except Exception as e:
             return str(e)
         return output

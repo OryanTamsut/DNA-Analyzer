@@ -1,4 +1,6 @@
 from Commands.CreationCommand import CreationLoad, CreationDup, CreationNew
+from Commands.ManipulationCommand import ManipulateSlice, ManipulateReplace
+from Commands.SeqMenagmentCommand import MenageDel, MenageSave
 
 
 class GetCommands:
@@ -8,7 +10,11 @@ class GetCommands:
         self.commands = {
             "new": CreationNew.CreationNew,
             "dup": CreationDup.CreationDup,
-            "load": CreationLoad.CreationLoad
+            "load": CreationLoad.CreationLoad,
+            "slice": ManipulateSlice.ManipulateSlice,
+            "replace": ManipulateReplace.ManipulateReplace,
+            "del": MenageDel.MenageDel,
+            "save": MenageSave.MenageSave
         }
 
     def get_command(self, command, dna_data, arguments):

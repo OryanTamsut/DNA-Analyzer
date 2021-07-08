@@ -9,7 +9,6 @@ class DnaSequence:
             self.__dna_string = ""
         self.__name = name
         self.__id = id
-        self.__duplicated_item = 0
 
     def insert(self, nucleotide_value, index):
         if type(nucleotide_value) is not str or len(nucleotide_value) > 1 or nucleotide_value not in "ACTG":
@@ -35,12 +34,6 @@ class DnaSequence:
 
     def get_id(self):
         return self.__id
-
-    def get_duplicated_item(self):
-        return self.__duplicated_item
-
-    def inc_duplicated_item(self):
-        self.__duplicated_item += 1
 
     def assignment(self, new_dna):
         if type(new_dna) is str:

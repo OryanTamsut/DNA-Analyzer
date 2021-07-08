@@ -18,6 +18,7 @@ class CMD(CLI):
                 continue
             command = command.strip().split(" ")
             output = self.__invoker.execute(command[0], self.__dna_data, command[1:])
-            print(output)
+            if output:
+                print(output)
             print(self, end='')
             command = input()
