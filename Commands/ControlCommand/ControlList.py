@@ -1,7 +1,7 @@
-from Commands.Manage.Icommand import Icommand
+from Commands.ControlCommand.IControl import IControl
 
 
-class ControlList(Icommand):
+class ControlList(IControl):
     def __init__(self, arguments):
         super().__init__()
         self.__dna_data = super().get_dna_data()
@@ -15,10 +15,11 @@ class ControlList(Icommand):
             seq_represent = f"[{seq.get_id()}] {seq.get_name()}: {seq.get_short_string()}"
             if name != list(name_to_id.keys())[-1]:
                 seq_represent += "\n"
-            if seq.get_time_save() == None:
+            status = super().get_status(seq)
+            if status == "new":
                 str += "o " + seq_represent
-            elif seq.get_time_save() < seq.get_time_update():
+            elif status == "modified":
                 str += "* " + seq_represent
-            elif seq.get_time_save() >= seq.get_time_update():
+            else:
                 str += "- " + seq_represent
         return str

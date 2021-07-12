@@ -34,3 +34,13 @@ class Icommand:
 
     def find_target_seq(self, arguments, dna_data, new_name, new_suffix):
         pass
+
+    def confirm(self):
+        print("Please confirm by 'y' or 'Y' , or cancel by 'n' or 'N' .")
+        confirm = input("> confirm >>> ")
+        while confirm not in "YyNn" or confirm == "":
+            print("You have typed an invalid response. Please either confirm by 'y' / 'Y' , or cancel by 'n' / 'N' .")
+            confirm = input("> confirm >>> ")
+        if confirm in "Nn":
+            return False
+        return True

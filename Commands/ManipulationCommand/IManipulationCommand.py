@@ -16,3 +16,11 @@ class IManipulationCommand(Icommand):
             return dna_data.add_dna_sec(new_name, "")
         else:
             return super().find_src_seq(arguments, dna_data)
+
+    def find_second_seq(self, dna_data, arguments):
+        if arguments[1][0] != "@" and arguments[1][0] != "#":
+            raise Exception("error, need id or name of the sequence to slice")
+        dna_seq = dna_data.get_dna_data(arguments[1])
+        if dna_seq is None:
+            raise Exception("error, sequence not exist")
+        return dna_seq

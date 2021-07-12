@@ -1,8 +1,8 @@
 from Commands.CreationCommand import CreationLoad, CreationDup, CreationNew
-from Commands.ManipulationCommand import ManipulateSlice, ManipulateReplace
+from Commands.ManipulationCommand import ManipulateSlice, ManipulateReplace, ManipulateConcat
 from Commands.SeqMenagmentCommand import MenageDel, MenageSave
 from Commands.seqAnalysisCommand import AnalysisLen, AnalysisFind, AnalysisFindall, AnalysisCount
-from Commands.ControlCommand import ControlList, ControlQuit
+from Commands.ControlCommand import ControlList, ControlQuit, ControlShow
 
 
 class GetCommands:
@@ -22,7 +22,9 @@ class GetCommands:
             "findall": AnalysisFindall.AnalysisFindall,
             "count": AnalysisCount.AnalysisCount,
             "list": ControlList.ControlList,
-            "quit": ControlQuit.ControlQuit
+            "quit": ControlQuit.ControlQuit,
+            "show": ControlShow.ControlShow,
+            "concat": ManipulateConcat.ManipulateConcat
         }
 
     def set_commands(self, commands):
