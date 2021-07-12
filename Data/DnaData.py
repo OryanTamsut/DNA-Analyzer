@@ -1,4 +1,4 @@
-from DNAdata.DnaSequence import DnaSequence
+from Data.DnaSequence import DnaSequence
 
 
 class DnaData:
@@ -37,7 +37,11 @@ class DnaData:
 
     def get_dna_data(self, name_or_id):
         if name_or_id[0] == "#":
-            return self.__id_dna.get(int(name_or_id[1:]))
+            try:
+                id = int(name_or_id[1:])
+            except:
+                raise Exception("error, not vaid id number")
+            return self.__id_dna.get(id)
         else:
             return self.__id_dna.get(self.__name_to_id.get(name_or_id[1:]))
 
@@ -47,3 +51,6 @@ class DnaData:
             raise Exception("error, not found this DNA sequence")
         self.__name_to_id.pop(removed.get_name())
         return removed
+
+    def get_all_data(self):
+        return self.__name_to_id, self.__id_dna

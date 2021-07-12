@@ -1,5 +1,6 @@
-from CLI.CMD import CMD
+from CLI.CMD.CMDfromInput import CMDfromInput
+
 
 if __name__ == '__main__':
-    cmd = CMD()
+    cmd = CMDfromInput()
     cmd.run()

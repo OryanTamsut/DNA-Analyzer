@@ -1,6 +1,21 @@
+from Data.DnaData import DnaData
+from Data.BatchData import BatchData
+
+
 class Icommand:
+
+    def __init__(self):
+        self.__dna_data = DnaData()
+        self.__batch_data = BatchData()
+
     def action(self):
         pass
+
+    def get_dna_data(self):
+        return self.__dna_data
+
+    def get_batch_data(self):
+        return self.__batch_data
 
     def split_command(self, arguments):
         new_arguments = []

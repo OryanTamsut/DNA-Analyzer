@@ -1,17 +1,16 @@
-from Commands.Manage.Icommand import Icommand
+from Commands.BatchCommand.IBatch import IBatch
 
 
-class MenageSave(Icommand):
+class Batchsave(IBatch):
     def __init__(self, arguments):
         super().__init__()
-        self.__dna_data = super().get_dna_data()
+        self.__batch_data = super().get_batch_data()
         self.__arguments = super().split_command(arguments)
 
     def action(self):
-        if len(self.__arguments) == 0 or len(self.__arguments) > 2:
-            raise Exception("error, not correct format: save <seq> [<filename>]")
-        src_seq = super().find_src_seq(self.__arguments, self.__dna_data)
-        file_name = src_seq.get_name() if len(self.__arguments) == 1 else self.__arguments[-1]
+        batch_name = super().find_batch(self.__arguments, '')
+        batch = self.__batch_data.get_batch(batch_name)
+        file_name = batch_name[1:] if len(self.__arguments) == 1 else self.__arguments[-1]
         if file_name.count(".") > 1:
             raise Exception("error, not valid file name- couldn't contain more that one '.' ")
         if file_name.count(".") == 0:
@@ -20,5 +19,6 @@ class MenageSave(Icommand):
             raise Exception("error, suffix need to be rawdna")
 
         with open("SavedFile/" + file_name, 'w') as f:
-            f.write(src_seq.get_dna_string())
-        src_seq.set_time_save()
+            for command in batch:
+                f.write(command + "\n")
+        return ''

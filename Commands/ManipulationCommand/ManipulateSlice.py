@@ -2,8 +2,9 @@ from Commands.ManipulationCommand.IManipulationCommand import IManipulationComma
 
 
 class ManipulateSlice(IManipulationCommand):
-    def __init__(self, dna_data, arguments):
-        self.__dna_data = dna_data
+    def __init__(self, arguments):
+        super().__init__()
+        self.__dna_data = super().get_dna_data()
         self.__arguments = super().split_command(arguments)
 
     def menage_arguments(self):

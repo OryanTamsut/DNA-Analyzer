@@ -1,0 +1,3 @@
+new AAA
+dup #1
+slice #1 1 2
