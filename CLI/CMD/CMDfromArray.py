@@ -8,6 +8,7 @@ class CMDfromArray(CMD):
         self.__commands = commands
 
     def run(self):
+        # run every command from the array and print the output
         for command in self.__commands:
             print(self, end='')
             super().run_command(command)

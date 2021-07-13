@@ -8,6 +8,11 @@ class Batchshow(IBatch):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        get the batch from the DB by its name and print it to screen
+        :return: str that contain the batch content
+        """
+
         batch_name = super().find_batch(self.__arguments, "@")
         batch = self.__batch_data.get_batch(batch_name)
         str = ""

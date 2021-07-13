@@ -2,7 +2,18 @@ from Commands.Manage.Icommand import Icommand
 
 
 class IAnalysisCommand(Icommand):
+    """
+    functions that uses in Analysis Command
+    """
+
     def get_base_seq(self, arguments, dna_data, valid_seq):
+        """
+        get the sequence that need to be analysis
+        :param arguments: command's args
+        :param dna_data: DNA DB
+        :param valid_seq: the chars that need to appear before the name of the sequence
+        :return: the sequence if found
+        """
         if len(arguments) == 0:
             raise Exception("error, need arguments")
         if arguments[0][0] not in valid_seq:
@@ -14,6 +25,12 @@ class IAnalysisCommand(Icommand):
         return seq
 
     def get_seq_to_be_found(self, arguments, dna_data):
+        """
+        get the second sequence- the sequence that need to find in the base sequence
+        :param arguments: command's args
+        :param dna_data: DNA DB
+        :return: the second sequence
+        """
         if len(arguments) != 2:
             raise Exception("error, need 2 arguments")
         if arguments[1][0] != "#" and arguments[1][0] != "@":
@@ -24,6 +41,12 @@ class IAnalysisCommand(Icommand):
         return seq.get_dna_string()
 
     def findall(self, base_str, str_to_find):
+        """
+        find all the indices where the str_to_find appears in base_str.
+        :param base_str: the string to look for
+        :param str_to_find: the string to find
+        :return: array that contain all the indices where the str_to_find appears in base_str.
+        """
         arr = []
         for i in range(len(base_str)):
             if base_str[i:].startswith(str_to_find):

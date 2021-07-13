@@ -8,6 +8,12 @@ class CreationLoad(ICreationCommand):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        loads the sequence from the file, assigns it with a number (ID) and a default name, if
+        one was not provided (based on the file name, possibly postfixed with a number if the
+        name already exists), and prints it.
+        :return: str that represent the new sequence
+        """
         file_name = self.__arguments[0] if "." in self.__arguments[0] else self.__arguments[0] + ".rawdna"
         with open("FilesToLoad/" + file_name, 'r') as f:
             string_dna = f.readline()

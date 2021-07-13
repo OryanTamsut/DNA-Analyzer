@@ -14,9 +14,11 @@ class CMDfromInput(CMD):
 
     def __init__(self):
         super().__init__()
+        # add the batch command to the invoker
         super().set_invoker(CMDfromInput.commands_list)
 
     def run(self):
+        # get command and run it
         print(self, end='')
         command = input()
         while True:

@@ -8,6 +8,9 @@ class MenageSave(Icommand):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        save sequence in file
+        """
         if len(self.__arguments) == 0 or len(self.__arguments) > 2:
             raise Exception("error, not correct format: save <seq> [<filename>]")
         src_seq = super().find_src_seq(self.__arguments, self.__dna_data)

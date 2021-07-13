@@ -9,8 +9,11 @@ class RunBatch(IBatch):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        get the butch from the DB, send it to the cmd and run it
+        """
+
         batch_name = super().find_batch(self.__arguments, '')
         butch = self.__batch_data.get_batch(batch_name)
         cmd = CMDfromArray(butch)
         cmd.run()
-        return

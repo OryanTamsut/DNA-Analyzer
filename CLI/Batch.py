@@ -1,13 +1,15 @@
 from CLI.CLI import CLI
-from Commands.Manage.Invoker import Invoker
 
 
 class Batch(CLI):
     def __init__(self):
         super().__init__("batch")
-        self.__invoker = Invoker()
 
     def run(self):
+        """
+        create list of commands
+        :return: the list
+        """
         print(self, end='')
         command = input()
         command_list = []

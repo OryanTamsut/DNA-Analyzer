@@ -8,6 +8,10 @@ class MenageDel(Icommand):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        delete command from the DB, ask for confirm
+        :return: if success to delete or not
+        """
         src_seq = super().find_src_seq(self.__arguments, self.__dna_data)
         confirm = super().confirm()
         if not confirm:

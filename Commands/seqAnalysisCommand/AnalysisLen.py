@@ -8,5 +8,10 @@ class AnalysisLen(IAnalysisCommand):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        get the sequence and return its len
+        :return: the sequence len
+        """
+
         seq = super().get_base_seq(self.__arguments, self.__dna_data, "#")
         return len(seq)

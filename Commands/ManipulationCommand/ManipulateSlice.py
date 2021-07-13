@@ -8,6 +8,9 @@ class ManipulateSlice(IManipulationCommand):
         self.__arguments = super().split_command(arguments)
 
     def menage_arguments(self):
+        """
+        check if the args are valid and return the index to start and to end
+        """
         try:
             from_ind = int(self.__arguments[1])
             last_ind = int(self.__arguments[2])
@@ -18,6 +21,10 @@ class ManipulateSlice(IManipulationCommand):
         return from_ind, last_ind
 
     def action(self):
+        """
+        Slices the sequence, so that starts in <from_ind> (0-based index) and ends in <to_ind(i nclusive ).
+        :return: the string that represent the new DNA seq
+        """
         is_valid = self.menage_arguments()
         from_ind = is_valid[0]
         last_ind = is_valid[1]

@@ -16,6 +16,11 @@ class DnaSequence:
         self.__last_time_updated = datetime.now()
 
     def insert(self, nucleotide_value, index):
+        """
+        insert char in the string of the dna seq
+        :param nucleotide_value: the char to insert
+        :param index: the index to insert
+        """
         if type(nucleotide_value) is not str or len(nucleotide_value) > 1 or nucleotide_value not in "ACTG":
             raise TypeError("not valid DNA letter, need only A C T G letters")
         if 0 <= index < len(self.__dna_string):
@@ -31,6 +36,10 @@ class DnaSequence:
         return self.__dna_string
 
     def get_short_string(self):
+        """
+        short the dna string if his length great than 40
+        :return:
+        """
         short_string = self.__dna_string[:40]
         if len(short_string) > 32:
             short_string = short_string[:32] + "..." + short_string[len(short_string) - 3:]
@@ -43,6 +52,7 @@ class DnaSequence:
         return self.__id
 
     def assignment(self, new_dna):
+        # change the string of the dna
         if type(new_dna) is str:
             self.__dna_string = new_dna
             self.set_time_update()

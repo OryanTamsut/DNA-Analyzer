@@ -8,7 +8,8 @@ from Commands.ControlCommand import ControlList, ControlQuit, ControlShow
 class GetCommands:
 
     def __init__(self):
-        """Factory Method"""
+        """Factory class"""
+        # list of all the commands and their classes
         self.__commands = {
             "new": CreationNew.CreationNew,
             "dup": CreationDup.CreationDup,
@@ -28,6 +29,7 @@ class GetCommands:
         }
 
     def set_commands(self, commands):
+        # add commands to the command's list
         self.__commands.update(commands)
 
     def get_command(self, command, arguments):

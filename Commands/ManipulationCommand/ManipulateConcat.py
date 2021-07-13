@@ -8,12 +8,18 @@ class ManipulateConcat(IManipulationCommand):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        concatenates <seq_2> at the end of seq_1 .
+        :return: the new seq
+        """
+
         if len(self.__arguments) < 2:
             raise Exception("error, not valid number of arguments. need <seq_1> <seq_2> arguments")
         new_string = ""
         new_name = ""
         copy_arg = self.__arguments[:]
         dna_seq_1 = super().find_src_seq(self.__arguments, self.__dna_data).get_name()
+        # concat all the dna sequence strings
         for i in range(len(copy_arg)):
             if copy_arg[0] == ":":
                 break
@@ -23,6 +29,7 @@ class ManipulateConcat(IManipulationCommand):
                 new_name += "_" + dna_seq.get_name()
             if len(copy_arg) > 1:
                 copy_arg = copy_arg[1:]
+        # save the concat string in the target sequence
         seq_target = super().find_target_seq(self.__arguments, self.__dna_data, dna_seq_1, "_c")
         seq_target.assignment(new_string)
         return f'[{seq_target.get_id()}] {seq_target.get_name()}: {seq_target.get_short_string()}'

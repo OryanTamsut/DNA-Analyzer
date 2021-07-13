@@ -8,6 +8,11 @@ class ControlList(IControl):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        get the DNA DB and print each dna seq with its status
+        :return: string that represent the list of the dna sequences
+        """
+
         name_to_id, id_to_dna = self.__dna_data.get_all_data()
         str = ""
         for name in name_to_id.keys():

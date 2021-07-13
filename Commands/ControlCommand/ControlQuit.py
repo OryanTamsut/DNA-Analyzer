@@ -8,9 +8,16 @@ class ControlQuit(IControl):
         self.__arguments = super().split_command(arguments)
 
     def action(self):
+        """
+        prints a goodbye message and exists the application.
+        If not all the sequences are up to date , it first requests for a confirmation.
+        :return: "Thank you for using Dnalanyzer.\nGoodbye!" if exit or "cancel" if choose to stay
+        """
+
         name_to_id, id_to_dna = self.__dna_data.get_all_data()
         count_modified = 0
         count_new = 0
+        # count how much dna seq are not up to date
         for name in name_to_id.keys():
             seq = id_to_dna.get(name_to_id[name])
             status = super().get_status(seq)
